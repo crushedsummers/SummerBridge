@@ -3,15 +3,77 @@
   text-align: center;
 }
 
-#in-game {
+#inGame {
   border: black 10px solid;
   width: 97%;
   min-height: 600px;
   margin: 1%;
+/*  background-color: grey;
+*/  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-h3 {
-  color: white;
-  font-size: 30px;
-  background-color: grey;
+/*TITLE PAGE*/
+#icon {
+  border-radius: 20%;
+  animation: rotate 5s infinite;
+  box-shadow: 10px 10px 5px;
+  position: absolute;
+}
+@keyframes rotate {
+  0%{top: 270px;}
+  50%{top: 290px;}
+  100%{top: 270px;}
+}
+
+/*all three elements*/
+.playy {
+  margin: 1%;
+  display: flex;
+  position: relative;
+  border: 1px black dotted;
+}
+
+/*MAIN PAGE*/
+#mainText {
+  width: 70%;
+  height: 400px;
+}
+
+/*STATS*/
+#stats {
+  width: 100%;
+  min-height: 200px;
+}
+
+/*SIDE MENU*/
+#sideMenu {
+  width: 30%;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#portrait {
+  height: 65px;
+  width: 65px;
+  position: relative;
+}
+#ethnicity {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  border-radius: 50%;
+  top: 40px;
+  left: 40px;
+}
+#name {
+  position: relative;
+}
+#levelUp {
+  position: relative;
+
+  height: 100px;
+  width: 100px;
 }

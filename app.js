@@ -114,11 +114,8 @@ $(icon).on("mouseup", function(){
   });
 });
 
-// $("#inGame").append(icon);
-
-  // 
-    
-  //     var clicc = document.createElement("audio");
-  //     $(clicc).src = "http://freesound.org/data/previews/399/399934_1676145-lq.mp3";
-  //     $(clicc).play();
-  // }
+$("#inGame").append(icon);
+//var clicc = document.createElement("audio");
+//$(clicc).src = "http://freesound.org/data/previews/399/399934_1676145-lq.mp3";
+//$(clicc).play();
+//}

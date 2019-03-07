@@ -111,8 +111,8 @@ $(icon).on("mouseup", function(){
     - smarts
     - looks (always low LOL)
     */
-//   });
-// });
+  });
+});
 
 // $("#inGame").append(icon);
 

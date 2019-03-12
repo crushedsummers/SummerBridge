@@ -6,22 +6,38 @@
 #inGame {
   border: black 10px solid;
   width: 97%;
-  min-height: 600px;
-  margin: 1%;
+  height: 600px;
 /*  background-color: grey;
 */  display: flex;
-  justify-content: center;
   align-items: flex-start;
+  justify-content: center;
+  flex-flow: row wrap;
+
+}
+
+@media all and (min-width: 400px) {
+  /* We tell both sidebars to share a row */
+  .playy { flex: 1 auto; }
+}
+
+@media all and (min-width: 200px) {
+  /* We invert order of first sidebar and main
+   * And tell the main element to take twice as much width as the other two sidebars 
+   */
+  #sideMenu { flex: 2 0px; }
+  #sideMenu { order: 1; }
+  #mainText  { order: 2; }
+  #stats { order: 3; }
 }
 
 /*TITLE PAGE*/
 #icon {
   border-radius: 20%;
-  animation: rotate 5s infinite;
+  animation: bob 5s infinite;
   box-shadow: 10px 10px 5px;
   position: absolute;
 }
-@keyframes rotate {
+@keyframes bob {
   0%{top: 270px;}
   50%{top: 290px;}
   100%{top: 270px;}
@@ -29,7 +45,6 @@
 
 /*all three elements*/
 .playy {
-  margin: 1%;
   display: flex;
   position: relative;
   border: 1px black dotted;
@@ -39,12 +54,20 @@
 #mainText {
   width: 70%;
   height: 400px;
+  display: flex;
+  flex-wrap: nowrap;
+  text-align: left;
+  align-self: flex-start;
+}
+
+#hi {
+  color: blue;
 }
 
 /*STATS*/
 #stats {
   width: 100%;
-  min-height: 200px;
+  height: 180px;
 }
 
 /*SIDE MENU*/
@@ -56,24 +79,24 @@
   justify-content: center;
 }
 #portrait {
-  height: 65px;
-  width: 65px;
+  height: 5vw;
+  width: 5vw;
   position: relative;
 }
 #ethnicity {
-  height: 25px;
-  width: 25px;
+  height: 2vw;
+  width: 2vw;
   position: absolute;
   border-radius: 50%;
-  top: 40px;
-  left: 40px;
+  top: 45px;
+  left: 45px;
 }
 #name {
   position: relative;
+  font-size: 1.5vw;
 }
 #levelUp {
   position: relative;
-
   height: 100px;
   width: 100px;
 }

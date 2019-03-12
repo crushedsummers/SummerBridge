@@ -60,8 +60,8 @@
   align-self: flex-start;
 }
 
-#hi {
-  color: blue;
+.decision {
+  background-color: yellow;
 }
 
 /*STATS*/

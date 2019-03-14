@@ -1,6 +1,7 @@
 * {
   background-color: lightgrey;
   text-align: center;
+  display: block;
 }
 
 #inGame {
@@ -26,8 +27,9 @@
    */
   #sideMenu { flex: 2 0px; }
   #sideMenu { order: 1; }
-  #mainText  { order: 2; }
-  #stats { order: 3; }
+  #sideContainer { order: 2; }
+  #mainText  { order: 3; }
+  #stats { order: 4; }
 }
 
 /*TITLE PAGE*/
@@ -51,17 +53,28 @@
 }
 
 /*MAIN PAGE*/
-#mainText {
+.mainPage {
   width: 70%;
   height: 400px;
   display: flex;
   flex-wrap: nowrap;
   text-align: left;
   align-self: flex-start;
+  overflow: scroll;
+}
+#mainText {
+  width: 70%;
+  height: 400px;
+  /*display: flex;
+  flex-wrap: nowrap;
+  text-align: left;
+  align-self: flex-start;
+  overflow: scroll;*/
 }
 
 .decision {
   background-color: yellow;
+  cursor: pointer;
 }
 
 /*STATS*/
@@ -78,6 +91,16 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+#sideContainer{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.sideElements{
+  margin: 5px;
+  cursor: pointer;
+  position: relative;
+}
 #portrait {
   height: 5vw;
   width: 5vw;
@@ -88,15 +111,84 @@
   width: 2vw;
   position: absolute;
   border-radius: 50%;
-  top: 45px;
-  left: 45px;
+  top: 50px;
+  left: 50px;
 }
 #name {
   position: relative;
   font-size: 1.5vw;
 }
+
+/*buttons*/
 #levelUp {
-  position: relative;
   height: 100px;
   width: 100px;
+}
+
+#email {
+  height: 60px;
+  width: 80px;
+}
+
+#achievements {
+  height: 100px;
+  width: 80px;
+}
+
+#story {
+  height: 70px;
+  width: 90px;
+}
+
+.mainPageVisibility{
+  opacity: 0;
+}
+
+/*ARROW*/
+/*credits: !BruNo from codepen*/
+#arrowContainer {
+  position: relative;
+  width: 80px;
+  height: 60px;
+  cursor: pointer;
+  margin: 5%;
+}
+
+#arrow {
+  position: absolute;
+  top: 25px;
+  width: 90%;
+  height: 10px;
+  background-color: #fff;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+  animation: arrow 700ms linear infinite; 
+}
+
+#arrow::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 10px;
+  top: -12px;
+  right: -8px;
+  background-color: #fff;
+  transform: rotate(45deg);
+}
+
+#arrow::before {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 10px;
+  top: 12px;
+  right: -8px;
+  background-color: #fff;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+  transform: rotate(-45deg);
+}
+
+@keyframes arrow{
+  0%{left: 0px;}
+  50%{left: 10px;}
+  100%{left: 0px;}
 }

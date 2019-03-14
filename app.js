@@ -89,8 +89,7 @@ $(icon).on("mouseup", function(){
   $(arrowContainer).append(arrow);
   
 /*BUTTONS*/
-  
-  //switching main pages
+    //switching main pages
   function switchPages() {
     //save previous texts
     var prevPage = $("#mainText").html();

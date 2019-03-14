@@ -96,20 +96,17 @@
   
   /*BUTTONS*/
     //: email
-    var eMail = $("<img>")
-    //.on("click", sideElementButtonClicked);
+    var eMail = $("<img>").on("click", sideElementButtonClicked);
     $(eMail).attr("src","assets/email.png");
     $(eMail).attr("id", "email");
     $(eMail).attr("class", "sideElements");
     //: achievements
-    var achieve = $("<img>")
-    //.on("click", sideElementButtonClicked);
+    var achieve = $("<img>").on("click", sideElementButtonClicked);
     $(achieve).attr("src","assets/achievements.png");
     $(achieve).attr("id", "achieve");
     $(achieve).attr("class", "sideElements");
     //: story
-    var story = $("<img>")
-    //.on("click", sideElementButtonClicked);
+    var story = $("<img>").on("click", sideElementButtonClicked);
     $(story).attr("src","assets/story.png");
     $(story).attr("id", "story");
     $(story).attr("class", "sideElements mainPageVisibility");
@@ -121,36 +118,38 @@
     //$(levelUp).attr("class", "sideElements");
 
   /*BUTTON FUNCTIONS*/
-  //save HTMLS
-    var prevPage = $("#mainText").html();
-    var savedStory = "";
-    var savedEmail = "";
-    var savedAchieve = "";
-    
-    function savePages(){
-      //save HTML in appropriate tab (variables)
-      if ($(prevPage).has("#storyDiv")){
-        //going away from story page 
-        console.log("going away from story page");
-        savedStory = prevPage;
-      }
+    //save HTMLS
+      var savedStory = $("#storyDiv");
+      var savedEmail = $("emailDiv");
+      var savedAchieve = $("achieveDiv");
       
-      else if ($(prevPage).has("#emailDiv")){
-        //going away from email page
-        console.log("going away from email page");
-        savedEmail = prevPage;
-      }
-      
-      else if ($(prevPage).has("#achieveDiv")){
-        //going away from achieve page
-        console.log("going away from achieve page");
-        savedAchieve = prevPage;
-      }
-    }
+      function savePages(){
+        console.log("pages saving rn");
+        var prevPage = $("#mainText").html();
 
-    //note: will ALWAYS occur in story page
+        //save HTML in appropriate tab (variables)
+        if ($(prevPage).has("#storyDiv")){
+          //going away from story page 
+          console.log("previous story page saved in savedStory");
+          savedStory = prevPage;
+        }
+        
+        else if ($(prevPage).has("#emailDiv")){
+          //going away from email page
+          console.log("previous email page saved in savedEmail");
+          savedEmail = prevPage;
+        }
+        
+        else if ($(prevPage).has("#achieveDiv")){
+          //going away from achieve page
+          console.log("previous achievements page saved in savedAchieved");
+          savedAchieve = prevPage;
+        }
+      }
+
     //if level up button clicked:
-    $(levelUp).click(function() {
+      //note: will ALWAYS occur in story page
+      $(levelUp).click(function() {
         //doesn't get over 16yrs old
         if (currentAge != 16) {
           currentAge += 1;
@@ -356,7 +355,7 @@
               }
         
         //save current progress
-        savePages()
+        savePages();
         
         //exiting out of age boundary  
         } 
@@ -366,12 +365,139 @@
         }
       });
 
-
     //if changing page buttons clicked:
-      //delete everything
-        //$("#mainText").html();
+    function sideElementButtonClicked() {
+      //append (emailDiv)
 
-      
+        //check which icons are appended = the current page is the one not
+        var currentPageIcon = $(".mainPageVisibility").attr("id");
+        var currentPage = currentPageIcon+"Div";
+        
+        //$(this) == icon clicked
+        var desiredPageIcon = $(this).attr("id");
+        var desiredPage = desiredPageIcon+"Div";
+        
+        //make sure the button you didn't press = the same page you're on
+        if (!(currentPageIcon == desiredPageIcon)){
+          //√AIM: de-append icon clicked and append icon deppended
+            //the icon clicked will disappear
+            $("#"+desiredPageIcon).addClass("mainPageVisibility");
+            //the icon you're on will appear
+            $("#"+currentPageIcon).removeClass("mainPageVisibility");
+          //√AIM: change pages
+            //delete everything
+            console.log(desiredPageIcon);
+            //savePages();
+            $("#mainText").html("");
+            $("#achieveDiv").html("");
+
+            //the page you want to go will appear
+            if (desiredPageIcon == "email"){
+              console.log("email picked!!");
+              /*EMAILS*/
+                //what happens at age 4+
+                  if (currentAge == 4){
+                  for (var i=0;i < age4Email.length;i++){
+                    $("#emailDiv").append(age4Email[i])
+                  }
+                  }
+                //what happens at age 7+
+                  else if (currentAge == 7){
+                    for (var i=0;i < age7Email.length;i++){
+                      $("#emailDiv").append(age7Email[i])
+                    }
+                  }
+                //what happens at age 12+
+                  else if (currentAge == 12){
+                    for (var i=0;i < age12Email.length;i++){
+                      $("#emailDiv").append(age12Email[i])
+                    }
+                    $(".decision").click(function(){
+                      //PROBLEM!!!!
+                      //the id MUST == name of array
+                      var chosenDecision = $(this).attr("id");
+                      for (var i=0;i < chosenDecision.length;i++){
+                        $("#emailDiv").append(chosenDecision[i]);
+                        $(".decision").removeClass("decision");
+                        console.log("decision chosen!");
+                      }
+                    });
+                  }
+                //what happens at age 13+
+                  else if (currentAge == 13){
+                    for (var i=0;i < age13Email.length;i++){
+                      $("#emailDiv").append(age13Email[i])
+                    }
+                    $(".decision").click(function(){
+                      //PROBLEM!!!!
+                      //the id MUST == name of array
+                      var chosenDecision = $(this).attr("id");
+                      for (var i=0;i < chosenDecision.length;i++){
+                        $("#emailDiv").append(chosenDecision[i]);
+                        $(".decision").removeClass("decision");
+                        console.log("decision chosen!");
+                      }
+                    });
+                  }
+                //what happens at age 14+
+                  else if (currentAge == 14){
+                    for (var i=0;i < age13Email.length;i++){
+                      $("#emailDiv").append(age14Email[i])
+                    }
+                    if (age14emailcontConfirm == "true"){
+                      for (var i=0;i < age14EmailCont.length;i++){
+                        $("#emailDiv").append(age14EmailCont[i])
+                      }
+                    }
+                  }
+              $("#mainText").append(savedEmail);
+              $("#levelUp").css("display", "none");
+            }
+            else if (desiredPageIcon == "story"){
+              $("#levelUp").css("display", "block");
+              $("#mainText").append(savedStory);
+            }
+            else if (desiredPageIcon == "achieve"){
+              //all achieves
+                if (currentAge == 12){
+                  for (var i=0;i < age12Achieve.length;i++){
+                    $("#achieveDiv").append(age12Achieve[i]);
+                  }
+                }
+                else if (currentAge == 13){
+                  for (var i=0;i < age13Achieve.length;i++){
+                    $("#achieveDiv").append(age13Achieve[i]);
+                  }
+                }
+                else if (currentAge == 14){
+                  for (var i=0;i < age14Achieve.length;i++){
+                    $("#achieveDiv").append(age14Achieve[i]);
+                  }
+                }
+                else if (currentAge == 15){
+                  for (var i=0;i < age15Achieve.length;i++){
+                    $("#achieveDiv").append(age15Achieve[i]);
+                  }
+                }
+                else if (currentAge == 16){
+                  for (var i=0;i < age16Achieve.length;i++){
+                    $("#achieveDiv").append(age16Achieve[i]);
+                  }
+                }
+              $("#levelUp").css("display", "none");
+              $("#mainText").append("#achieveDiv");
+            }
+
+            //AIM: append all related contents to page up 
+              //(tricky, needs to do this not only when pressing different buttons, but when lvling up)
+              //(also need for lvl up button to be disabled when checking any other page than storyDiv)
+              //√(also need it to save current progress)
+          }
+          //re-append click function
+        $(".sideElements").on("click", sideElementButtonClicked);
+    }
+
+
       
 $("#sideContainer").append(levelUp);
 

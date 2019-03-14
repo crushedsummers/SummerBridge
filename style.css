@@ -3,18 +3,16 @@
   text-align: center;
   display: block;
 }
-
 #inGame {
   border: black 10px solid;
   width: 97%;
   height: 600px;
-/*  background-color: grey;
-*/  display: flex;
+  display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-flow: row wrap;
-
 }
+
 
 @media all and (min-width: 400px) {
   /* We tell both sidebars to share a row */
@@ -44,6 +42,11 @@
   50%{top: 290px;}
   100%{top: 270px;}
 }
+@keyframes fastBob {
+  0%{top: 0px;}
+  50%{top: 10px;}
+  100%{top: 0px;}
+}
 
 /*all three elements*/
 .playy {
@@ -54,13 +57,11 @@
 
 /*MAIN PAGE*/
 .mainPage {
-  width: 70%;
+  width: 100%;
   height: 400px;
-  display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   text-align: left;
-  align-self: flex-start;
-  overflow: scroll;
+  overflow: auto;
 }
 #mainText {
   width: 70%;

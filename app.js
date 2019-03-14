@@ -154,8 +154,8 @@
         currentAge += 1;
         //change the words on top
           $("#location").html(currentAge+" Years Old");
-          console.log(currentAge);
           var age14emailcontConfirm = "false";
+          console.log(currentAge);
           $("#achieveDiv").html("");
 
         //first email arrives at age 4
@@ -179,11 +179,13 @@
               for (var i=0;i < age0.length;i++){
                 $("#storyDiv").append(age0[i]);
               }
+              $("#storyDiv").append("<br>");
               //what happens at 2 months old
               $(arrowContainer).on("click", function() {
                 //append story contents
                 for (var i=0;i < agemonth2.length;i++){
                   $("#storyDiv").append(agemonth2[i]);
+                  $("#storyDiv").append("<br>");
                 }
                 //arrow disappears
                 $(this).css("display", "none");
@@ -196,6 +198,7 @@
               });  
 
               $("#sideContainer").append(arrowContainer);
+              $("#storyDiv").append("<br>");
             } 
           //what happens at age 1+
             else if (currentAge == 1){
@@ -203,6 +206,7 @@
               for (var i=0;i < age1.length;i++){
                 $("#storyDiv").append(age1[i]);
               }
+              $("#storyDiv").append("<br>");
             } 
           //what happens at age 2+
             else if (currentAge == 2){
@@ -210,6 +214,7 @@
               for (var i=0;i < age2.length;i++){
                 $("#storyDiv").append(age2[i]);
               }
+              $("#storyDiv").append("<br>");
             } 
           //what happens at age 3+
             else if (currentAge == 3){
@@ -219,6 +224,7 @@
               for (var i=0;i < age3.length;i++){
                 $("#storyDiv").append(age3[i]);
               }
+              $("#storyDiv").append("<br>");
             } 
           //what happens at age 4+
             else if (currentAge == 4){
@@ -228,6 +234,7 @@
               for (var i=0;i < age4.length;i++){
                 $("#storyDiv").append(age4[i]);
               }
+              $("#storyDiv").append("<br>");
             }
           //what happens at age 5+
             else if (currentAge == 5){
@@ -238,6 +245,7 @@
               for (var i=0;i < age5.length;i++){
                 $("#storyDiv").append(age5[i]);
               }
+              $("#storyDiv").append("<br>");
             } 
           //what happens at age 6+
             else if (currentAge == 6){
@@ -247,6 +255,7 @@
               for (var i=0;i < age6.length;i++){
                 $("#storyDiv").append(age6[i]);
               }
+              $("#storyDiv").append("<br>");
             }
           //what happens at age 7+
             else if (currentAge == 7){
@@ -254,6 +263,7 @@
               for (var i=0;i < age7.length;i++){
                 $("#storyDiv").append(age7[i]);
               }
+              $("#storyDiv").append("<br>");
             }
           //what happens at age 8+
             else if (currentAge == 8) {
@@ -263,6 +273,7 @@
                 for (var i=0;i < age8.length;i++){
                   $("#storyDiv").append(age8[i]);
                 }
+                $("#storyDiv").append("<br>");
               //decision time! no matter what they pick
                 $(".decision").click(function(){
                   //the id MUST == name of array
@@ -278,13 +289,15 @@
                     console.log("decision chosen!");
                   }
                 });
+                $("#storyDiv").append("<br>");
             }
           //what happens at age 9+
             else if (currentAge == 9){
               //append story contents of age 6+
-              for (var i=0;i < age7.length;i++){
-                $("#storyDiv").append(age7[i]);
+              for (var i=0;i < age9.length;i++){
+                $("#storyDiv").append(age9[i]);
               }
+              $("#storyDiv").append("<br>");
             }
           //what happens at age 10+
             else if (currentAge == 10){
@@ -292,6 +305,7 @@
               for (var i=0;i < age10.length;i++){
                 $("#storyDiv").append(age10[i]);
               }
+              $("#storyDiv").append("<br>");
             }
           //what happens at age 11+
             else if (currentAge == 11){
@@ -302,18 +316,21 @@
                 for (var i=0;i < age11.length;i++){
                   $("#storyDiv").append(age11[i]);
                 }
+                $("#storyDiv").append("<br>");
             }
           //what happens at age 12+
             else if (currentAge == 12){
               for (var i=0;i < age12.length;i++){
                 $("#storyDiv").append(age12[i]);
               }
+              $("#storyDiv").append("<br>");
             }
           //what happens at age 13+
             else if (currentAge == 13){
               for (var i=0;i < age13.length;i++){
                 $("#storyDiv").append(age13[i]);
               }
+              $("#storyDiv").append("<br>");
             }
           //what happens at age 14+
             else if (currentAge == 14){
@@ -323,21 +340,23 @@
                 for (var i=0;i < age14.length;i++){
                   $("#storyDiv").append(age14[i]);
                 }
-              //what happens at 14 months old- CONT
+                $("#storyDiv").append("<br>");
+              //what happens at 14 cont
                 $(arrowContainer).on("click", function() {
-                  //==true for email!!
-                  age14emailcontConfirm = "true";
-                  //append story contents of age 14+
+                //append story contents
                   for (var i=0;i < age14Cont.length;i++){
-                    $("#storyDiv").append(age14Cont[i]);
+                   $("#storyDiv").append(age14Cont[i]);
                   }
-                  //lvlup button returns
-                  $("#levelUp").css("display", "block");
-                  //arrow disappears
+                  age14emailcontConfirm = "true";
+                //arrow disappears
                   $(this).css("display", "none");
-                  //remove onclick function on arrow
+                //lvlup button returns
+                  $("#levelUp").css("display", "block");
+                //remove onclick function on arrow
                   $(arrowContainer).off("click");
-                });
+               });  
+                $("#storyDiv").append("<br>");
+              $(arrowContainer).css("display", "block");
             }
           //what happens at age 15+
             else if (currentAge == 15){
@@ -345,6 +364,7 @@
               for (var i=0;i < age15.length;i++){
                 $("#storyDiv").append(age15[i]);
               }
+              $("#storyDiv").append("<br>");
             }
           //what happens at age 16+
             else if (currentAge == 16){
@@ -352,25 +372,42 @@
               for (var i=0;i < age16.length;i++){
                 $("#storyDiv").append(age16[i]);
               }
+              $("#storyDiv").append("<br>");
             }
+
       /*EMAILS*/
             //what happens at age 4+
               if (currentAge == 4){  
+                $("#email").css("opacity", "1").css("animation", "fastBob 1s linear infinite");
+                $("#email").on("click", function(){
+                  $(this).css("opacity", "0.5").css("animation-play-state", "paused");
+                });
                 for (var i=0;i < age4Email.length;i++){
                   $("#emailDiv").append(age4Email[i]);
                 }
+                $("#emailDiv").append("<br>");
               }
             //what happens at age 7+
               else if (currentAge == 7){
+                $("#email").css("opacity", "1").css("animation", "fastBob 1s linear infinite");
+                $("#email").on("click", function(){
+                  $(this).css("opacity", "0.5").css("animation-play-state", "paused");
+                });
                 for (var i=0;i < age7Email.length;i++){
                   $("#emailDiv").append(age7Email[i]);
                 }
+                $("#emailDiv").append("<br>");
               }
             //what happens at age 12+
               else if (currentAge == 12){
+                $("#email").css("opacity", "1").css("animation", "fastBob 1s linear infinite");
+                $("#email").on("click", function(){
+                  $(this).css("opacity", "0.5").css("animation-play-state", "paused");
+                });
                 for (var i=0;i < age12Email.length;i++){
                   $("#emailDiv").append(age12Email[i]);
                 }
+                $("#emailDiv").append("<br>");
                 $(".decision").click(function(){
                   //PROBLEM!!!!
                   //the id MUST == name of array
@@ -382,12 +419,18 @@
                     console.log("decision chosen!");
                   }
                 });
+                $("#emailDiv").append("<br>");
               }
             //what happens at age 13+
               else if (currentAge == 13){
+                $("#email").css("opacity", "1").css("animation", "fastBob 1s linear infinite");
+                $("#email").on("click", function(){
+                  $(this).css("opacity", "0.5").css("animation-play-state", "paused");
+                });
                 for (var i=0;i < age13Email.length;i++){
                   $("#emailDiv").append(age13Email[i]);
                 }
+                $("#emailDiv").append("<br>");
                 $(".decision").click(function(){
                   //PROBLEM!!!!
                   //the id MUST == name of array
@@ -398,45 +441,75 @@
                     console.log("decision chosen!");
                   }
                 });
+                $("#storyDiv").append("<br>");
               }
             //what happens at age 14+
               else if (currentAge == 14){
+                $("#email").css("opacity", "1").css("animation", "fastBob 1s linear infinite");
+                $("#email").on("click", function(){
+                  $(this).css("opacity", "0.5").css("animation-play-state", "paused");
+                });
                 for (var i=0;i < age13Email.length;i++){
                   $("#emailDiv").append(age14Email[i]);
                 }
+                $("#storyDiv").append("<br>");
                 if (age14emailcontConfirm == "true"){
+                  $("#email").css("opacity", "1").css("animation", "fastBob 1s linear infinite");
+                $("#email").on("click", function(){
+                  $(this).css("opacity", "0.5").css("animation-play-state", "paused");
+                });
                   for (var i=0;i < age14EmailCont.length;i++){
                     $("#emailDiv").append(age14EmailCont[i])
                   }
                 }
+                $("#emailDiv").append("<br>");
               }
               /*ACHIEVE*/
               if (currentAge == 12){
+                $("#achieve").css("opacity", "1").css("animation", "fastBob 1s linear infinite");
+                $("#achieve").on("click", function(){
+                  $(this).css("opacity", "0.5").css("animation-play-state", "paused");
+                });
               for (var i=0;i < age12Achieve.length;i++){
                 $("#achieveDiv").append(age12Achieve[i]);
               }
             }
             else if (currentAge == 13){
+              $("#achieve").css("opacity", "1").css("animation", "fastBob 1s linear infinite");
+                $("#achieve").on("click", function(){
+                  $(this).css("opacity", "0.5").css("animation-play-state", "paused");
+                });
               for (var i=0;i < age13Achieve.length;i++){
                 $("#achieveDiv").append(age13Achieve[i]);
               }
             }
             else if (currentAge == 14){
+              $("#achieve").css("opacity", "1").css("animation", "fastBob 1s linear infinite");
+                $("#achieve").on("click", function(){
+                  $(this).css("opacity", "0.5").css("animation-play-state", "paused");
+                });
               for (var i=0;i < age14Achieve.length;i++){
                 $("#achieveDiv").append(age14Achieve[i]);
               }
             }
             else if (currentAge == 15){
+              $("#achieve").css("opacity", "1").css("animation", "fastBob 1s linear infinite");
+                $("#achieve").on("click", function(){
+                  $(this).css("opacity", "0.5").css("animation-play-state", "paused");
+                });
               for (var i=0;i < age15Achieve.length;i++){
                 $("#achieveDiv").append(age15Achieve[i]);
               }
             }
             else if (currentAge == 16){
+              $("#achieve").css("opacity", "1").css("animation", "fastBob 1s linear infinite");
+                $("#achieve").on("click", function(){
+                  $(this).css("opacity", "0.5").css("animation-play-state", "paused");
+                });
               for (var i=0;i < age16Achieve.length;i++){
                 $("#achieveDiv").append(age16Achieve[i]);
               }
             }
-
 
       //save current progress
       savePages();
@@ -445,7 +518,40 @@
       } 
       else {
         console.log("!!! reached end!");
-        //THE END SEQUENCE
+        $("#location").html("The rest will be written in the future....");
+        
+        for (var i=0;i < age170.length;i++){
+          $("#storyDiv").append(age170[i]);
+        }
+        $("#storyDiv").append("<br>");
+        //what happens at 2 months old
+        $(arrowContainer).on("click", function() {
+          //append story contents
+          for (var i=0;i < age171.length;i++){
+            $("#storyDiv").append(age171[i]);
+          }
+          $(arrowContainer).off("click");
+          $(arrowContainer).on("click", function() {
+          //append story contents
+          for (var i=0;i < age172.length;i++){
+            $("#storyDiv").append(age172[i]);
+          }
+          $(arrowContainer).off("click");
+          $(arrowContainer).on("click", function() {
+          //append story contents
+          for (var i=0;i < age173.length;i++){
+            $("#storyDiv").append(age173[i]);
+          }
+          $(arrowContainer).off("click");
+          $(arrowContainer).css("display", "none");
+        });
+        });
+        });  
+
+
+           $(arrowContainer).css("display", "block");
+        $("#storyDiv").append("<br>");
+        $("#levelUp").css("display", "none");
       }
     });
 
@@ -466,8 +572,6 @@
       
       //change pages
         //delete everything
-        console.log(desiredPage);
-        console.log(currentPage);
         //savePages();
         
         //the page you want to go will appear
@@ -674,22 +778,49 @@ $("#sideContainer").append(levelUp);
       $("<p>Taking an interest in Debate, Raphaele participated in a HKU 'Critical Thinking' Course for Summer.</p>"),
       $("<p>With that knowledge, she developed a 'Casual Debate Club' with her friends.</p>"),
       $("<p>She also joined the Mock Trial Club to enhance her skills and knowledge in not only critical thinking, but public speaking.</p>"),
-      
+      $("<br>"),
       $("<p>Recognising her interest in video editng, Raphaele finally decided to join the video productions club 'Campus TV'.</p>"),
       $("<p>She decided to broaden her video editing skills gained over the years and participated in a challenging video competition with her friends, ending up as part of the batch of Semi-Finalists out of 1500 videos (at most 4500 participants).</p>"),
-      
+      $("<br>"),
       $("<p>Although seemingly late, She took an interest in Coding. She decided to taste coding through a summer programme.</p>"),
       $("<p>Confirming her interest, she continued her coding journey through learning basic Web Development in a Coding Course.</p>"),
+      $("<a href='https://crushedsummers.github.io/IChess/'>To showcase her jQuery knowledge, she's in the process of finishing her coded chess game, in which she started by scratch</a>"),
       $("<p>Taking advantage of her coding interest and art knowledge, She made two visual novels with Python, using the aid of Renpy.</p>")
       
       ];
 
     //contents of END
-      var END = [
+      var age170 = [
       $("<p><strong>END</strong></p>"),
-      $("<p>Editors note: Phew! This took a long time to finish but it was fun to go through my past bit by bit.</p>"),
-      $("<p>I would like to say that nothing has been frabricated. Even the emails (though of course I needed to pick out the more significant things of said years.)</p>"),
-      $("<p>I hope you enjoyed going through a small biography of my life!</p>")
+      $("<p>Editors note: Phew! This took a long time to finish.</p>"),
+      $("<p>Knowing the recent trend of BitLife, I thought it was a cool idea to do a parody and do a mini autobiography of my life!</p>"),
+      $("<p>Anyways, I wanted to mention a couple of more things to make sure this counts as a personal statement.</p>"),
+      $("<br>"),
+      ];
+      var age171 = [
+      $("<p>As seen through my achievements, I consider myself to have many skills in various areas.</p>"),
+      $("<p>I'll obviously be expanding my range of interests overtime as I often find the appeal in certain interests.</p>"),
+      $("<p>I felt as it's definetly was based on pure interest as I suddenly adapted an interest in coding despite my background in art and video editing.</p>"),
+      $("<p>Although more experienced on the arts, coding and maths is similar to a game where you'd have to play by their rules to win- or get what you want.</p>"),
+      $("<p>Which is why I definetly had a lot of fun doing this.</p>"),
+      $("<br>"),
+      ];
+      var age172 = [
+      $("<p>I've definetly stumbled on a difficult period when I was around 13/14.</p>"),
+      $("<p>As I'm not 13/14, I can't explain why I acted the way I did, but my guess would be that I haven't found education that important or interesting.</p>"),
+      $("<p>I consider myself lucky to have finally gotten motivation back to focus on my life.</p>"),
+      $("<p>In a way, one could correlate my wide field of interests as a way to keep me motivated to have fun and learn at the same time.</p>"),
+      $("<p>As seen with the massive amount of clubs and commitment taken around 15.</p>"),
+      $("<p>This application itself is a part of it, I find it valuable to learn how to adapt to a student-teacher situation, as well as share my experiences.</p>"),
+      $("<p>Especially to those who might've had a hard time as I had previously.</p>"),
+      $("<br>"),
+      ];
+      
+      var age173 = [
+      $("<p>This about sums up my Creative Personal Statement.</p>"),
+      $("<p>Even if I don't get accepted, I'm glad to have gotten into this situation where I had to create this and explore more about myself (as of now, it's about 900 lines of code).</p>"),
+      $("<p>Of course, I'd be honored to be considered as I'd be super excited to be able to help Summerbridge's cause.</p>"),
+      $("<p>So thank you for the opportunity, and for going through my BitLife!</p>")
       ];
 
     /* Checklist:
@@ -827,6 +958,7 @@ $("#sideContainer").append(levelUp);
       $("<p>Learnt basic Web Development in an Coding Academy for a year <mark>(Coding+)</mark></p>"),
       $("<p><small>Participated in a C++ coding camp for summer <mark>(Coding+++)</mark><small></p>"),
       $("<p><small>Created two VNs in Python<mark>(Art++)(Coding++)(Leadership++)</mark><small></p>"),
+      $("<p><small>Created Digital Chess by scratch to showcase knowledge in jQuery <mark>(Coding+++)</mark><small></p>"),
       $("<p><small>Dedicated self research and created products for her Personal Project <mark>(Video Editing++)</mark><small></p>"),
       $("<br>"),
       $("<p>Achieved an 'Improvement Scholarship' Award from the school</p>"),

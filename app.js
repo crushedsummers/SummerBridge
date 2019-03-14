@@ -118,6 +118,17 @@
     //$(levelUp).attr("class", "sideElements");
 
   /*BUTTON FUNCTIONS*/
+    //if level up button clicked:
+      //age up
+      //update story
+    //if changing page buttons clicked:
+      //save HTML in appropriate tab (variables)
+      //delete everything
+      //append contents wanted
+      //de-append age up, ONLY age up when at story page. make things simple
+
+
+//coded references!!!
     //switching main pages
       function switchPages() {
           //save previous texts
@@ -152,312 +163,311 @@
           //re-append click function
           $(".sideElements").on("click", switchPages);
       }
-
     //when one age up:
-    $(levelUp).click(function() {
-      
-      //doesn't get over 16yrs old
-      if (currentAge != 16) {
-        currentAge += 1;
-        //change the words on top
-          $("#location").html(currentAge+" Years Old");
-          console.log(currentAge);
-          var age14emailcontConfirm = "false";
-
-        //first email arrives at age 4
-          if (currentAge >= 4) {
-            $("#sideContainer").append(eMail);
-          }
-        //first achievement arrives at age 12
-          if (currentAge >= 12) {
-            $("#sideContainer").append(achieve);
-          }
-
-        /*INCOMING! LOAD OF WASTED SPACE!*/
-        //PROBLEM: UNABLE TO APPEND AT VERY START OF GAME, FOR NOW, AGE = -1
+      $(levelUp).click(function() {
         
-        /*STORY*/
-          //what happens at age 0+
-            if (currentAge >= 0){
-              //SPECIAL: lvlUp button disappears so players can proceed to 2nd month 
-              $("#levelUp").css("display", "none");
-              //append story contents of age 0
-              for (var i=0;i < age0.length;i++){
-                $("#storyDiv").append(age0[i]);
-              }
-              //what happens at 2 months old
-              $(arrowContainer).on("click", function() {
-                //append story contents
-                for (var i=0;i < agemonth2.length;i++){
-                  $("#storyDiv").append(agemonth2[i]);
-                }
-                //arrow disappears
-                $(this).css("display", "none");
-                //ethnicity changes
-                $(flag).attr("src", "assets/dubai.jpg");
-                //lvlup button returns
-                $("#levelUp").css("display", "block");
-                //remove onclick function on arrow
-                $(arrowContainer).off("click");
-              });  
+        //doesn't get over 16yrs old
+        if (currentAge != 16) {
+          currentAge += 1;
+          //change the words on top
+            $("#location").html(currentAge+" Years Old");
+            console.log(currentAge);
+            var age14emailcontConfirm = "false";
 
-              $("#sideContainer").append(arrowContainer);
-            } 
-          //what happens at age 1+
-            else if (currentAge >= 1){
-              //append story contents of age 1+
-              for (var i=0;i < age1.length;i++){
-                $("#storyDiv").append(age1[i]);
-              }
-            } 
-          //what happens at age 2+
-            else if (currentAge >= 2){
-              //append story contents of age 2+
-              for (var i=0;i < age2.length;i++){
-                $("#storyDiv").append(age2[i]);
-              }
-            } 
-          //what happens at age 3+
-            else if (currentAge >= 3){
-              //change ethnicity to france
-              $(flag).attr("src", "assets/france.png");
-              //append story contents of age 3+
-              for (var i=0;i < age3.length;i++){
-                $("#storyDiv").append(age3[i]);
-              }
-            } 
-          //what happens at age 4+
-            else if (currentAge >= 4){
-              //change ethnicity to ireland
-              $(flag).attr("src", "assets/ireland.png");
-              //append story contents of age 4+
-              for (var i=0;i < age4.length;i++){
-                $("#storyDiv").append(age4[i]);
-              }
+          //first email arrives at age 4
+            if (currentAge >= 4) {
+              $("#sideContainer").append(eMail);
             }
-          //what happens at age 5+
-            else if (currentAge >= 5){
-              //change portrait
-              currentPortrait = 1;
-              $(portrait).attr("src", portraitPhases[currentPortrait]);
-              //append story contents of age 5+
-              for (var i=0;i < age5.length;i++){
-                $("#storyDiv").append(age5[i]);
-              }
-            } 
-          //what happens at age 6+
-            else if (currentAge >= 6){
-              //change ethnicity to hong kong
-              $(flag).attr("src", "assets/hongkong.png");
-              //append story contents of age 6+
-              for (var i=0;i < age6.length;i++){
-                $("#storyDiv").append(age6[i]);
-              }
+          //first achievement arrives at age 12
+            if (currentAge >= 12) {
+              $("#sideContainer").append(achieve);
             }
-          //what happens at age 7+
-            else if (currentAge >= 7){
-              //append story contents of age 7+
-              for (var i=0;i < age7.length;i++){
-                $("#storyDiv").append(age7[i]);
-              }
-            }
-          //what happens at age 8+
-            else if (currentAge >= 8) {
-              //SPECIAL: hide age up button, until one clicks on a decision 
+
+          /*INCOMING! LOAD OF WASTED SPACE!*/
+          //PROBLEM: UNABLE TO APPEND AT VERY START OF GAME, FOR NOW, AGE = -1
+          
+          /*STORY*/
+            //what happens at age 0+
+              if (currentAge >= 0){
+                //SPECIAL: lvlUp button disappears so players can proceed to 2nd month 
                 $("#levelUp").css("display", "none");
-              //append story contents of age 8+
-                for (var i=0;i < age8.length;i++){
-                  $("#storyDiv").append(age8[i]);
+                //append story contents of age 0
+                for (var i=0;i < age0.length;i++){
+                  $("#storyDiv").append(age0[i]);
                 }
-              //decision time! no matter what they pick
+                //what happens at 2 months old
+                $(arrowContainer).on("click", function() {
+                  //append story contents
+                  for (var i=0;i < agemonth2.length;i++){
+                    $("#storyDiv").append(agemonth2[i]);
+                  }
+                  //arrow disappears
+                  $(this).css("display", "none");
+                  //ethnicity changes
+                  $(flag).attr("src", "assets/dubai.jpg");
+                  //lvlup button returns
+                  $("#levelUp").css("display", "block");
+                  //remove onclick function on arrow
+                  $(arrowContainer).off("click");
+                });  
+
+                $("#sideContainer").append(arrowContainer);
+              } 
+            //what happens at age 1+
+              else if (currentAge >= 1){
+                //append story contents of age 1+
+                for (var i=0;i < age1.length;i++){
+                  $("#storyDiv").append(age1[i]);
+                }
+              } 
+            //what happens at age 2+
+              else if (currentAge >= 2){
+                //append story contents of age 2+
+                for (var i=0;i < age2.length;i++){
+                  $("#storyDiv").append(age2[i]);
+                }
+              } 
+            //what happens at age 3+
+              else if (currentAge >= 3){
+                //change ethnicity to france
+                $(flag).attr("src", "assets/france.png");
+                //append story contents of age 3+
+                for (var i=0;i < age3.length;i++){
+                  $("#storyDiv").append(age3[i]);
+                }
+              } 
+            //what happens at age 4+
+              else if (currentAge >= 4){
+                //change ethnicity to ireland
+                $(flag).attr("src", "assets/ireland.png");
+                //append story contents of age 4+
+                for (var i=0;i < age4.length;i++){
+                  $("#storyDiv").append(age4[i]);
+                }
+              }
+            //what happens at age 5+
+              else if (currentAge >= 5){
+                //change portrait
+                currentPortrait = 1;
+                $(portrait).attr("src", portraitPhases[currentPortrait]);
+                //append story contents of age 5+
+                for (var i=0;i < age5.length;i++){
+                  $("#storyDiv").append(age5[i]);
+                }
+              } 
+            //what happens at age 6+
+              else if (currentAge >= 6){
+                //change ethnicity to hong kong
+                $(flag).attr("src", "assets/hongkong.png");
+                //append story contents of age 6+
+                for (var i=0;i < age6.length;i++){
+                  $("#storyDiv").append(age6[i]);
+                }
+              }
+            //what happens at age 7+
+              else if (currentAge >= 7){
+                //append story contents of age 7+
+                for (var i=0;i < age7.length;i++){
+                  $("#storyDiv").append(age7[i]);
+                }
+              }
+            //what happens at age 8+
+              else if (currentAge >= 8) {
+                //SPECIAL: hide age up button, until one clicks on a decision 
+                  $("#levelUp").css("display", "none");
+                //append story contents of age 8+
+                  for (var i=0;i < age8.length;i++){
+                    $("#storyDiv").append(age8[i]);
+                  }
+                //decision time! no matter what they pick
+                  $(".decision").click(function(){
+                    //the id MUST == name of array
+                    var chosenDecision = $(this).attr("id");
+                    console.log(chosenDecision);
+                    //offerDialouge is TEMPORARY, PROBLEM
+                    for (var i=0;i < offerDialouge.length;i++){
+                      $("#storyDiv").append(offerDialouge[i]);
+                      //make lvlup available again
+                      $("#levelUp").css("display", "block");
+                      //get rid of decision option after haven chosen one
+                      $(".decision").removeClass("decision");
+                      console.log("decision chosen!");
+                    }
+                  });
+              }
+            //what happens at age 9+
+              else if (currentAge >= 9){
+                //append story contents of age 6+
+                for (var i=0;i < age7.length;i++){
+                  $("#storyDiv").append(age7[i]);
+                }
+              }
+            //what happens at age 10+
+              else if (currentAge >= 10){
+                //append story contents of age 5+
+                for (var i=0;i < age10.length;i++){
+                  $("#storyDiv").append(age10[i]);
+                }
+              }
+            //what happens at age 11+
+              else if (currentAge >= 11){
+                //change portrait
+                  currentPortrait = 2;
+                  $(portrait).attr("src", portraitPhases[currentPortrait]);
+                //append story contents of age 5+
+                  for (var i=0;i < age11.length;i++){
+                    $("#storyDiv").append(age11[i]);
+                  }
+              }
+            //what happens at age 12+
+              else if (currentAge >= 12){
+                for (var i=0;i < age12.length;i++){
+                  $("#storyDiv").append(age12[i]);
+                }
+              }
+            //what happens at age 13+
+              else if (currentAge >= 13){
+                for (var i=0;i < age13.length;i++){
+                  $("#storyDiv").append(age13[i]);
+                }
+              }
+            //what happens at age 14+
+              else if (currentAge >= 14){
+                //SPECIAL: hide age up button, until one clicks on arrow
+                  $("#levelUp").css("display", "none");
+                //append story contents of age 14+
+                  for (var i=0;i < age14.length;i++){
+                    $("#storyDiv").append(age14[i]);
+                  }
+                //what happens at 14 months old- CONT
+                  $(arrowContainer).on("click", function() {
+                    //==true for email!!
+                    age14emailcontConfirm = "true";
+                    //append story contents of age 14+
+                    for (var i=0;i < age14Cont.length;i++){
+                      $("#storyDiv").append(age14Cont[i]);
+                    }
+                    //lvlup button returns
+                    $("#levelUp").css("display", "block");
+                    //arrow disappears
+                    $(this).css("display", "none");
+                    //remove onclick function on arrow
+                    $(arrowContainer).off("click");
+                  });
+              }
+            //what happens at age 15+
+              else if (currentAge >= 15){
+                //append story contents of age 15+
+                for (var i=0;i < age15.length;i++){
+                  $("#storyDiv").append(age15[i]);
+                }
+              }
+            //what happens at age 16+
+              else if (currentAge >= 16){
+                //append story contents of age 16+
+                for (var i=0;i < age16.length;i++){
+                  $("#storyDiv").append(age16[i]);
+                }
+              }
+          /*EMAILS*/
+            //what happens at age 4+
+              if (currentAge >= 4){
+              for (var i=0;i < age4Email.length;i++){
+                $("#emailDiv").append(age4Email[i])
+              }
+              }
+            //what happens at age 7+
+              else if (currentAge >= 7){
+                for (var i=0;i < age7Email.length;i++){
+                  $("#emailDiv").append(age7Email[i])
+                }
+              }
+            //what happens at age 12+
+              else if (currentAge >= 12){
+                for (var i=0;i < age12Email.length;i++){
+                  $("#emailDiv").append(age12Email[i])
+                }
                 $(".decision").click(function(){
+                  //PROBLEM!!!!
                   //the id MUST == name of array
                   var chosenDecision = $(this).attr("id");
-                  console.log(chosenDecision);
-                  //offerDialouge is TEMPORARY, PROBLEM
-                  for (var i=0;i < offerDialouge.length;i++){
-                    $("#storyDiv").append(offerDialouge[i]);
-                    //make lvlup available again
-                    $("#levelUp").css("display", "block");
-                    //get rid of decision option after haven chosen one
+                  for (var i=0;i < chosenDecision.length;i++){
+                    $("#emailDiv").append(chosenDecision[i]);
                     $(".decision").removeClass("decision");
                     console.log("decision chosen!");
                   }
                 });
-            }
-          //what happens at age 9+
-            else if (currentAge >= 9){
-              //append story contents of age 6+
-              for (var i=0;i < age7.length;i++){
-                $("#storyDiv").append(age7[i]);
               }
-            }
-          //what happens at age 10+
-            else if (currentAge >= 10){
-              //append story contents of age 5+
-              for (var i=0;i < age10.length;i++){
-                $("#storyDiv").append(age10[i]);
-              }
-            }
-          //what happens at age 11+
-            else if (currentAge >= 11){
-              //change portrait
-                currentPortrait = 2;
-                $(portrait).attr("src", portraitPhases[currentPortrait]);
-              //append story contents of age 5+
-                for (var i=0;i < age11.length;i++){
-                  $("#storyDiv").append(age11[i]);
-                }
-            }
-          //what happens at age 12+
-            else if (currentAge >= 12){
-              for (var i=0;i < age12.length;i++){
-                $("#storyDiv").append(age12[i]);
-              }
-            }
-          //what happens at age 13+
-            else if (currentAge >= 13){
-              for (var i=0;i < age13.length;i++){
-                $("#storyDiv").append(age13[i]);
-              }
-            }
-          //what happens at age 14+
-            else if (currentAge >= 14){
-              //SPECIAL: hide age up button, until one clicks on arrow
-                $("#levelUp").css("display", "none");
-              //append story contents of age 14+
-                for (var i=0;i < age14.length;i++){
-                  $("#storyDiv").append(age14[i]);
-                }
-              //what happens at 14 months old- CONT
-                $(arrowContainer).on("click", function() {
-                  //==true for email!!
-                  age14emailcontConfirm = "true";
-                  //append story contents of age 14+
-                  for (var i=0;i < age14Cont.length;i++){
-                    $("#storyDiv").append(age14Cont[i]);
-                  }
-                  //lvlup button returns
-                  $("#levelUp").css("display", "block");
-                  //arrow disappears
-                  $(this).css("display", "none");
-                  //remove onclick function on arrow
-                  $(arrowContainer).off("click");
-                });
-            }
-          //what happens at age 15+
-            else if (currentAge >= 15){
-              //append story contents of age 15+
-              for (var i=0;i < age15.length;i++){
-                $("#storyDiv").append(age15[i]);
-              }
-            }
-          //what happens at age 16+
-            else if (currentAge >= 16){
-              //append story contents of age 16+
-              for (var i=0;i < age16.length;i++){
-                $("#storyDiv").append(age16[i]);
-              }
-            }
-        /*EMAILS*/
-          //what happens at age 4+
-            if (currentAge >= 4){
-            for (var i=0;i < age4Email.length;i++){
-              $("#emailDiv").append(age4Email[i])
-            }
-            }
-          //what happens at age 7+
-            else if (currentAge >= 7){
-              for (var i=0;i < age7Email.length;i++){
-                $("#emailDiv").append(age7Email[i])
-              }
-            }
-          //what happens at age 12+
-            else if (currentAge >= 12){
-              for (var i=0;i < age12Email.length;i++){
-                $("#emailDiv").append(age12Email[i])
-              }
-              $(".decision").click(function(){
-                //PROBLEM!!!!
-                //the id MUST == name of array
-                var chosenDecision = $(this).attr("id");
-                for (var i=0;i < chosenDecision.length;i++){
-                  $("#emailDiv").append(chosenDecision[i]);
-                  $(".decision").removeClass("decision");
-                  console.log("decision chosen!");
-                }
-              });
-            }
-          //what happens at age 13+
-            else if (currentAge >= 13){
-              for (var i=0;i < age13Email.length;i++){
-                $("#emailDiv").append(age13Email[i])
-              }
-              $(".decision").click(function(){
-                //PROBLEM!!!!
-                //the id MUST == name of array
-                var chosenDecision = $(this).attr("id");
-                for (var i=0;i < chosenDecision.length;i++){
-                  $("#emailDiv").append(chosenDecision[i]);
-                  $(".decision").removeClass("decision");
-                  console.log("decision chosen!");
-                }
-              });
-            }
-          //what happens at age 14+
-            else if (currentAge >= 14){
-              for (var i=0;i < age13Email.length;i++){
-                $("#emailDiv").append(age14Email[i])
-              }
-              if (age14emailcontConfirm == "true"){
-                for (var i=0;i < age14EmailCont.length;i++){
-                  $("#emailDiv").append(age14EmailCont[i])
-                }
-              }
-            }
-        /*ACHIEVEMENTS*/
-          //what happens at age 12+
-             if (currentAge >= 12){
-                for (var i=0;i < age12Achieve.length;i++){
-                  $("#achieveDiv").append(age12Achieve[i]);
-                }
-              }
-          //what happens at age 13+
+            //what happens at age 13+
               else if (currentAge >= 13){
-                for (var i=0;i < age13Achieve.length;i++){
-                $("#achieveDiv").append(age13Achieve[i]);
+                for (var i=0;i < age13Email.length;i++){
+                  $("#emailDiv").append(age13Email[i])
                 }
+                $(".decision").click(function(){
+                  //PROBLEM!!!!
+                  //the id MUST == name of array
+                  var chosenDecision = $(this).attr("id");
+                  for (var i=0;i < chosenDecision.length;i++){
+                    $("#emailDiv").append(chosenDecision[i]);
+                    $(".decision").removeClass("decision");
+                    console.log("decision chosen!");
+                  }
+                });
               }
-          //what happens at age 14+
+            //what happens at age 14+
               else if (currentAge >= 14){
-                for (var i=0;i < age14Achieve.length;i++){
-                $("#achieveDiv").append(age14Achieve[i]);
+                for (var i=0;i < age13Email.length;i++){
+                  $("#emailDiv").append(age14Email[i])
+                }
+                if (age14emailcontConfirm == "true"){
+                  for (var i=0;i < age14EmailCont.length;i++){
+                    $("#emailDiv").append(age14EmailCont[i])
+                  }
                 }
               }
-          //what happens at age 15+
-              else if (currentAge >= 15){
-                for (var i=0;i < age15Achieve.length;i++){
-                $("#achieveDiv").append(age15Achieve[i]);
+          /*ACHIEVEMENTS*/
+            //what happens at age 12+
+               if (currentAge >= 12){
+                  for (var i=0;i < age12Achieve.length;i++){
+                    $("#achieveDiv").append(age12Achieve[i]);
+                  }
                 }
-              }
-          //what happens at age 16+
-              else if (currentAge >= 16){
-                for (var i=0;i < age16Achieve.length;i++){
-                $("#achieveDiv").append(age16Achieve[i]);
+            //what happens at age 13+
+                else if (currentAge >= 13){
+                  for (var i=0;i < age13Achieve.length;i++){
+                  $("#achieveDiv").append(age13Achieve[i]);
+                  }
                 }
-              }
+            //what happens at age 14+
+                else if (currentAge >= 14){
+                  for (var i=0;i < age14Achieve.length;i++){
+                  $("#achieveDiv").append(age14Achieve[i]);
+                  }
+                }
+            //what happens at age 15+
+                else if (currentAge >= 15){
+                  for (var i=0;i < age15Achieve.length;i++){
+                  $("#achieveDiv").append(age15Achieve[i]);
+                  }
+                }
+            //what happens at age 16+
+                else if (currentAge >= 16){
+                  for (var i=0;i < age16Achieve.length;i++){
+                  $("#achieveDiv").append(age16Achieve[i]);
+                  }
+                }
 
-        //exiting out of age boundary  
-      } 
-    else {
-      console.log("!!! reached end!");
-      //THE END SEQUENCE
-    }
-  });
-  $("#sideContainer").append(levelUp);
+          //exiting out of age boundary  
+        } 
+        else {
+          console.log("!!! reached end!");
+          //THE END SEQUENCE
+        }
+      });
 
+$("#sideContainer").append(levelUp);
 
-/*MAIN PAGE*/
+/*MAIN PAGE DIALOUGES*/
   /*STORY*/
     //contents of age 0 (2002)
     var age0 = [
@@ -784,7 +794,9 @@
       $("<p>Achieved an 'Improvement Scholarship' Award from the school</p>"),
     ];
     });
+
 //exiting out of click function of icon
 });
+
 //append icon, meaning append the start of the story, duuuunnnnnnn
 $("#inGame").append(icon);

@@ -65,7 +65,7 @@
 /*SIDE MENU*/
   /*SIDE ELEMENTS*/
     //variables
-    const name = "NAME";
+    const name = "Raphaele Guillemot";
     var currentAge = (-1);
     var currentPortrait = 0;
     // var status = ["Infant", "Student"];
@@ -96,17 +96,20 @@
   
   /*BUTTONS*/
     //: email
-    var eMail = $("<img>").on("click", switchPages);
+    var eMail = $("<img>")
+    //.on("click", sideElementButtonClicked);
     $(eMail).attr("src","assets/email.png");
     $(eMail).attr("id", "email");
     $(eMail).attr("class", "sideElements");
     //: achievements
-    var achieve = $("<img>").on("click", switchPages);
+    var achieve = $("<img>")
+    //.on("click", sideElementButtonClicked);
     $(achieve).attr("src","assets/achievements.png");
     $(achieve).attr("id", "achieve");
     $(achieve).attr("class", "sideElements");
     //: story
-    var story = $("<img>").on("click", switchPages);
+    var story = $("<img>")
+    //.on("click", sideElementButtonClicked);
     $(story).attr("src","assets/story.png");
     $(story).attr("id", "story");
     $(story).attr("class", "sideElements mainPageVisibility");
@@ -118,54 +121,36 @@
     //$(levelUp).attr("class", "sideElements");
 
   /*BUTTON FUNCTIONS*/
-    //if level up button clicked:
-      //age up
-      //update story
-    //if changing page buttons clicked:
+  //save HTMLS
+    var prevPage = $("#mainText").html();
+    var savedStory = "";
+    var savedEmail = "";
+    var savedAchieve = "";
+    
+    function savePages(){
       //save HTML in appropriate tab (variables)
-      //delete everything
-      //append contents wanted
-      //de-append age up, ONLY age up when at story page. make things simple
-
-
-//coded references!!!
-    //switching main pages
-      function switchPages() {
-          //save previous texts
-          var prevPage = $("#mainText").html();
-
-          //check which icons are appended = the current page is the one not
-          var currentPageIcon = $(".mainPageVisibility").attr("id");
-          var currentPage = currentPageIcon+"Div";
-          //$(this) == icon clicked
-          var desiredPageIcon = $(this).attr("id");
-          var desiredPage = desiredPageIcon+"Div";
-          
-          //make sure the button you didn't press = the same page you're on
-          if (!(currentPageIcon == desiredPageIcon)){
-            //√AIM: de-append icon clicked and append icon deppended
-            //√AIM: change pages
-            //AIM: append all related contents to page up 
-              //(tricky, needs to do this not only when pressing different buttons, but when lvling up)
-              //(also need for lvl up button to be disabled when checking any other page than storyDiv)
-              //(also need it to save current progress)
-            
-            //the icon clicked will disappear
-            $("#"+desiredPageIcon).addClass("mainPageVisibility");
-            //the icon you're on will appear
-            $("#"+currentPageIcon).removeClass("mainPageVisibility");
-            
-            //the page you are on will disappear
-            $("#mainText").html(" ");
-            //the page you want to go will appear
-            $("#mainText").append($("#"+desiredPage));
-          }
-          //re-append click function
-          $(".sideElements").on("click", switchPages);
+      if ($(prevPage).has("#storyDiv")){
+        //going away from story page 
+        console.log("going away from story page");
+        savedStory = prevPage;
       }
-    //when one age up:
-      $(levelUp).click(function() {
-        
+      
+      else if ($(prevPage).has("#emailDiv")){
+        //going away from email page
+        console.log("going away from email page");
+        savedEmail = prevPage;
+      }
+      
+      else if ($(prevPage).has("#achieveDiv")){
+        //going away from achieve page
+        console.log("going away from achieve page");
+        savedAchieve = prevPage;
+      }
+    }
+
+    //note: will ALWAYS occur in story page
+    //if level up button clicked:
+    $(levelUp).click(function() {
         //doesn't get over 16yrs old
         if (currentAge != 16) {
           currentAge += 1;
@@ -188,7 +173,7 @@
           
           /*STORY*/
             //what happens at age 0+
-              if (currentAge >= 0){
+              if (currentAge == 0){
                 //SPECIAL: lvlUp button disappears so players can proceed to 2nd month 
                 $("#levelUp").css("display", "none");
                 //append story contents of age 0
@@ -214,21 +199,21 @@
                 $("#sideContainer").append(arrowContainer);
               } 
             //what happens at age 1+
-              else if (currentAge >= 1){
+              else if (currentAge == 1){
                 //append story contents of age 1+
                 for (var i=0;i < age1.length;i++){
                   $("#storyDiv").append(age1[i]);
                 }
               } 
             //what happens at age 2+
-              else if (currentAge >= 2){
+              else if (currentAge == 2){
                 //append story contents of age 2+
                 for (var i=0;i < age2.length;i++){
                   $("#storyDiv").append(age2[i]);
                 }
               } 
             //what happens at age 3+
-              else if (currentAge >= 3){
+              else if (currentAge == 3){
                 //change ethnicity to france
                 $(flag).attr("src", "assets/france.png");
                 //append story contents of age 3+
@@ -237,7 +222,7 @@
                 }
               } 
             //what happens at age 4+
-              else if (currentAge >= 4){
+              else if (currentAge == 4){
                 //change ethnicity to ireland
                 $(flag).attr("src", "assets/ireland.png");
                 //append story contents of age 4+
@@ -246,7 +231,7 @@
                 }
               }
             //what happens at age 5+
-              else if (currentAge >= 5){
+              else if (currentAge == 5){
                 //change portrait
                 currentPortrait = 1;
                 $(portrait).attr("src", portraitPhases[currentPortrait]);
@@ -256,7 +241,7 @@
                 }
               } 
             //what happens at age 6+
-              else if (currentAge >= 6){
+              else if (currentAge == 6){
                 //change ethnicity to hong kong
                 $(flag).attr("src", "assets/hongkong.png");
                 //append story contents of age 6+
@@ -265,14 +250,14 @@
                 }
               }
             //what happens at age 7+
-              else if (currentAge >= 7){
+              else if (currentAge == 7){
                 //append story contents of age 7+
                 for (var i=0;i < age7.length;i++){
                   $("#storyDiv").append(age7[i]);
                 }
               }
             //what happens at age 8+
-              else if (currentAge >= 8) {
+              else if (currentAge == 8) {
                 //SPECIAL: hide age up button, until one clicks on a decision 
                   $("#levelUp").css("display", "none");
                 //append story contents of age 8+
@@ -296,21 +281,21 @@
                   });
               }
             //what happens at age 9+
-              else if (currentAge >= 9){
+              else if (currentAge == 9){
                 //append story contents of age 6+
                 for (var i=0;i < age7.length;i++){
                   $("#storyDiv").append(age7[i]);
                 }
               }
             //what happens at age 10+
-              else if (currentAge >= 10){
+              else if (currentAge == 10){
                 //append story contents of age 5+
                 for (var i=0;i < age10.length;i++){
                   $("#storyDiv").append(age10[i]);
                 }
               }
             //what happens at age 11+
-              else if (currentAge >= 11){
+              else if (currentAge == 11){
                 //change portrait
                   currentPortrait = 2;
                   $(portrait).attr("src", portraitPhases[currentPortrait]);
@@ -320,19 +305,19 @@
                   }
               }
             //what happens at age 12+
-              else if (currentAge >= 12){
+              else if (currentAge == 12){
                 for (var i=0;i < age12.length;i++){
                   $("#storyDiv").append(age12[i]);
                 }
               }
             //what happens at age 13+
-              else if (currentAge >= 13){
+              else if (currentAge == 13){
                 for (var i=0;i < age13.length;i++){
                   $("#storyDiv").append(age13[i]);
                 }
               }
             //what happens at age 14+
-              else if (currentAge >= 14){
+              else if (currentAge == 14){
                 //SPECIAL: hide age up button, until one clicks on arrow
                   $("#levelUp").css("display", "none");
                 //append story contents of age 14+
@@ -356,108 +341,24 @@
                   });
               }
             //what happens at age 15+
-              else if (currentAge >= 15){
+              else if (currentAge == 15){
                 //append story contents of age 15+
                 for (var i=0;i < age15.length;i++){
                   $("#storyDiv").append(age15[i]);
                 }
               }
             //what happens at age 16+
-              else if (currentAge >= 16){
+              else if (currentAge == 16){
                 //append story contents of age 16+
                 for (var i=0;i < age16.length;i++){
                   $("#storyDiv").append(age16[i]);
                 }
               }
-          /*EMAILS*/
-            //what happens at age 4+
-              if (currentAge >= 4){
-              for (var i=0;i < age4Email.length;i++){
-                $("#emailDiv").append(age4Email[i])
-              }
-              }
-            //what happens at age 7+
-              else if (currentAge >= 7){
-                for (var i=0;i < age7Email.length;i++){
-                  $("#emailDiv").append(age7Email[i])
-                }
-              }
-            //what happens at age 12+
-              else if (currentAge >= 12){
-                for (var i=0;i < age12Email.length;i++){
-                  $("#emailDiv").append(age12Email[i])
-                }
-                $(".decision").click(function(){
-                  //PROBLEM!!!!
-                  //the id MUST == name of array
-                  var chosenDecision = $(this).attr("id");
-                  for (var i=0;i < chosenDecision.length;i++){
-                    $("#emailDiv").append(chosenDecision[i]);
-                    $(".decision").removeClass("decision");
-                    console.log("decision chosen!");
-                  }
-                });
-              }
-            //what happens at age 13+
-              else if (currentAge >= 13){
-                for (var i=0;i < age13Email.length;i++){
-                  $("#emailDiv").append(age13Email[i])
-                }
-                $(".decision").click(function(){
-                  //PROBLEM!!!!
-                  //the id MUST == name of array
-                  var chosenDecision = $(this).attr("id");
-                  for (var i=0;i < chosenDecision.length;i++){
-                    $("#emailDiv").append(chosenDecision[i]);
-                    $(".decision").removeClass("decision");
-                    console.log("decision chosen!");
-                  }
-                });
-              }
-            //what happens at age 14+
-              else if (currentAge >= 14){
-                for (var i=0;i < age13Email.length;i++){
-                  $("#emailDiv").append(age14Email[i])
-                }
-                if (age14emailcontConfirm == "true"){
-                  for (var i=0;i < age14EmailCont.length;i++){
-                    $("#emailDiv").append(age14EmailCont[i])
-                  }
-                }
-              }
-          /*ACHIEVEMENTS*/
-            //what happens at age 12+
-               if (currentAge >= 12){
-                  for (var i=0;i < age12Achieve.length;i++){
-                    $("#achieveDiv").append(age12Achieve[i]);
-                  }
-                }
-            //what happens at age 13+
-                else if (currentAge >= 13){
-                  for (var i=0;i < age13Achieve.length;i++){
-                  $("#achieveDiv").append(age13Achieve[i]);
-                  }
-                }
-            //what happens at age 14+
-                else if (currentAge >= 14){
-                  for (var i=0;i < age14Achieve.length;i++){
-                  $("#achieveDiv").append(age14Achieve[i]);
-                  }
-                }
-            //what happens at age 15+
-                else if (currentAge >= 15){
-                  for (var i=0;i < age15Achieve.length;i++){
-                  $("#achieveDiv").append(age15Achieve[i]);
-                  }
-                }
-            //what happens at age 16+
-                else if (currentAge >= 16){
-                  for (var i=0;i < age16Achieve.length;i++){
-                  $("#achieveDiv").append(age16Achieve[i]);
-                  }
-                }
-
-          //exiting out of age boundary  
+        
+        //save current progress
+        savePages()
+        
+        //exiting out of age boundary  
         } 
         else {
           console.log("!!! reached end!");
@@ -465,194 +366,201 @@
         }
       });
 
+
+    //if changing page buttons clicked:
+      //delete everything
+        //$("#mainText").html();
+
+      
+      
 $("#sideContainer").append(levelUp);
 
 /*MAIN PAGE DIALOUGES*/
   /*STORY*/
     //contents of age 0 (2002)
-    var age0 = [
-      $("<p><strong>Age: 0 years</strong></p>"),
-      $("<p>The life you will be observing is that of a female named Raphaele Guillemot.</p>"),
-      $("<p>She was born in Cain, France.</p>"),
-      $("<p>Her Mother is named C.Kuan. She's from Hong Kong.</p>"),
-      $("<p>Her Father is named Y.Guillemot. He's from France.</p>")
-    ];
+      var age0 = [
+        $("<p><strong>Age: 0 years</strong></p>"),
+        $("<p>The life you will be observing is that of a female named Raphaele Guillemot.</p>"),
+        $("<p>She was born in Cain, France.</p>"),
+        $("<p>Her Mother is named C.Kuan. She's from Hong Kong.</p>"),
+        $("<p>Her Father is named Y.Guillemot. He's from France.</p>")
+      ];
 
     //contents of age 2 months
-    var agemonth2 = [
-      $("<p><strong>Age: 2 months</strong></p>"),
-      $("<p>Raphaele's parents wants to start their new life in <i>Dubai</i>.</p>")
-    ];
+      var agemonth2 = [
+        $("<p><strong>Age: 2 months</strong></p>"),
+        $("<p>Raphaele's parents wants to start their new life in <i>Dubai</i>.</p>")
+      ];
 
     //contents of age 1
-    var age1 = [
-     $("<p><strong>Age: 1 year</strong></p>")
-    ];
+      var age1 = [
+       $("<p><strong>Age: 1 year</strong></p>")
+      ];
 
     //contents of age 2 (2004)
-    var age2 = [
-      $("<p><strong>Age: 2 years</strong></p>")
-    ];
+      var age2 = [
+        $("<p><strong>Age: 2 years</strong></p>")
+      ];
    
     //contents of age 3
-    var age3 = [
-      $("<p><strong>Age: 3 years</strong></p>"),
-      $("<p>After careful consideration from Raphaele's parents.</p>"),
-      $("<p>They decided it was best to start Raphaele's education in her home place.</p>"),
-      $("<p>The family immigrated back to live in <i>France</i>.</p>")
-    ];
+      var age3 = [
+        $("<p><strong>Age: 3 years</strong></p>"),
+        $("<p>After careful consideration from Raphaele's parents.</p>"),
+        $("<p>They decided it was best to start Raphaele's education in her home place.</p>"),
+        $("<p>The family immigrated back to live in <i>France</i>.</p>")
+      ];
 
     //contents of age 4 (2006)
-    var age4 = [
-      $("<p><strong>Age: 4 years</strong></p>"),
-      $("<p>Raphaele doesn't seem to be happy.</p>"),
-      $("<p>After further consideration.</p>"),
-      $("<p>The family immigrated to <i>Ireland</i> in hopes of putting more focus on English instead.</p>")
-    ];
+      var age4 = [
+        $("<p><strong>Age: 4 years</strong></p>"),
+        $("<p>Raphaele doesn't seem to be happy.</p>"),
+        $("<p>After further consideration.</p>"),
+        $("<p>The family immigrated to <i>Ireland</i> in hopes of putting more focus on English instead.</p>")
+      ];
 
     //contents of age 5
-    var age5 = [
-      $("<p><strong>Age: 5 years</strong></p>")
-    ];
+      var age5 = [
+        $("<p><strong>Age: 5 years</strong></p>")
+      ];
 
     //contents of age 6 (2008)
-    var age6 = [
-      $("<p><strong>Age: 6 years</strong></p>"),
-      $("<p>Raphaele has finsihed kindergarten.</p>"),
-      $("<p>Life seemed dull in Ireland, so Raphaele and her family immigrated to <i>Hong Kong</i>.</p>"),
-      $("<p>She's now living with her grandmother.</p>")
-    ];
+      var age6 = [
+        $("<p><strong>Age: 6 years</strong></p>"),
+        $("<p>Raphaele has finsihed kindergarten.</p>"),
+        $("<p>Life seemed dull in Ireland, so Raphaele and her family immigrated to <i>Hong Kong</i>.</p>"),
+        $("<p>She's now living with her grandmother.</p>")
+      ];
 
     //contents of age 7
-    var age7 = [
-      $("<p><strong>Age: 7 years</strong></p>"),
-    ];
+      var age7 = [
+        $("<p><strong>Age: 7 years</strong></p>"),
+      ];
 
     //contents of age 8 (2010)
-    var age8 = [
-      $("<p><strong>Age: 8 years</strong></p>"),
-      $("<p>It's DEAR time, you went to the library corner and picked a random book.</p>"),
-      //theSoundofColors, 
-      $("<p>You notice a girl looking at the book.</p>"), 
-      $("<p>What do you do?</p>"), 
-      $("<p>Give the book to her and look for another one?</p>").attr("id", "giveUpDialouge").attr("class", "decision"),
-      $("<p>Ignore the girl and continue reading?</p>").attr("id", "ignoreDialouge").attr("class", "decision"),
-      $("<p>Offer to read together?</p>").attr("id", "offerDialouge").attr("class", "decision"),
-    ];
+      var age8 = [
+        $("<p><strong>Age: 8 years</strong></p>"),
+        $("<p>It's DEAR time, you went to the library corner and picked a random book.</p>"),
+        //theSoundofColors, 
+        $("<p>You notice a girl looking at the book.</p>"), 
+        $("<p>What do you do?</p>"), 
+        $("<p>Give the book to her and look for another one?</p>").attr("id", "giveUpDialouge").attr("class", "decision"),
+        $("<p>Ignore the girl and continue reading?</p>").attr("id", "ignoreDialouge").attr("class", "decision"),
+        $("<p>Offer to read together?</p>").attr("id", "offerDialouge").attr("class", "decision"),
+      ];
     //age 8 option giveUp
-    var giveUpDialouge = [
-      $("<p>You didn't want to create any problems so you hand the book to the girl.</p>"),
-      $("<p>She hesitates.</p>"),
-      $("<p>She offers to read with you.</p>"),
-      $("<p>Again, you didn't want to create and problems, so you reluctantly agree.</p>"),
-      $("<p>Raphaele met her best friend M.Tam!</p>")
-    ];
+      var giveUpDialouge = [
+        $("<p>You didn't want to create any problems so you hand the book to the girl.</p>"),
+        $("<p>She hesitates.</p>"),
+        $("<p>She offers to read with you.</p>"),
+        $("<p>Again, you didn't want to create and problems, so you reluctantly agree.</p>"),
+        $("<p>Raphaele met her best friend M.Tam!</p>")
+      ];
     //age 8 option ignore
-    var ignoreDialouge = [
-      $("<p>You didn't feel comfortable with people, so you tried to ignore her.</p>"),
-      $("<p>She eventually approaches you.</p>"),
-      $("<p>She offers to read with you.</p>"),
-      $("<p>You didn't want to create and problems, so you reluctantly agree.</p>"),
-      $("<p>Raphaele met her best friend M.Tam!</p>")
-    ];
+      var ignoreDialouge = [
+        $("<p>You didn't feel comfortable with people, so you tried to ignore her.</p>"),
+        $("<p>She eventually approaches you.</p>"),
+        $("<p>She offers to read with you.</p>"),
+        $("<p>You didn't want to create and problems, so you reluctantly agree.</p>"),
+        $("<p>Raphaele met her best friend M.Tam!</p>")
+      ];
     //age 8 option offer
-    var offerDialouge = [
-      $("<p>You know that you can't easily make friends due to the language barrier.</p>"),
-      $("<p>But this was a good opportunity.</p>"),
-      $("<p>You offer to read together.</p>"),
-      $("<p>She accepts.</p>"),
-      $("<p>Raphaele met her best friend M.Tam!</p>")
-    ];
+      var offerDialouge = [
+        $("<p>You know that you can't easily make friends due to the language barrier.</p>"),
+        $("<p>But this was a good opportunity.</p>"),
+        $("<p>You offer to read together.</p>"),
+        $("<p>She accepts.</p>"),
+        $("<p>Raphaele met her best friend M.Tam!</p>")
+      ];
 
     //contents of age 9 //year 3-4
-    var age9 = [
-      $("<p><strong>Age: 9 years</strong></p>"),
-      $("<p>She has shown an interest in games through Youtube.</p>")
-    ];
+      var age9 = [
+        $("<p><strong>Age: 9 years</strong></p>"),
+        $("<p>She has shown an interest in games through Youtube.</p>")
+      ];
 
     //contents of age 10 (2012)
-    var age10 = [
-      $("<p><strong>Age: 10 years</strong></p>"),
-      $("<p>Raphaele's new sister Gabriele Guillemot was born.</p>"),
-      $("<p>They have a 9 age gap.</p>")
-    ];
+      var age10 = [
+        $("<p><strong>Age: 10 years</strong></p>"),
+        $("<p>Raphaele's new sister Gabriele Guillemot was born.</p>"),
+        $("<p>They have a 9 age gap.</p>")
+      ];
 
     //contents of age 11
-    var age11 = [
-      $("<p><strong>Age: 11 years</strong></p>"),
-      $("<p>She has shown an interest in art.</p>")
-    ];
+      var age11 = [
+        $("<p><strong>Age: 11 years</strong></p>"),
+        $("<p>She has shown an interest in art.</p>")
+      ];
 
     //contents of age 12 (2014)//started tumblr
-    var age12 = [
-      $("<p><strong>Age: 12 years</strong></p>"),
-      $("<p>Raphaele has started grade 6, which is considered secondary in her school.</p>"),
-      $("<p>Little does she know, She has also finally contributed to her first fandom by making a tumblr blog of her Original Character (OC).</p>"),
-      $("<a href='http://askfluttershine-blog.tumblr.com/page/19'>She's proud of her work as it's currently running smoothly with 20 Followers.</a>")
-    ];
+      var age12 = [
+        $("<p><strong>Age: 12 years</strong></p>"),
+        $("<p>Raphaele has started grade 6, which is considered secondary in her school.</p>"),
+        $("<p>Little does she know, She has also finally contributed to her first fandom by making a tumblr blog of her Original Character (OC).</p>"),
+        $("<a href='http://askfluttershine-blog.tumblr.com/page/19'>She's proud of her work as it's currently running smoothly with 20 Followers.</a>")
+      ];
     
     //contents of age 13
-    var age13 = [
-      $("<p><strong>Age: 13 years</strong></p>"),
-      $("<p>She has started taking art more seriously as a hobby, obtaining a <i>tablet</i>!</p>"),
-      $("<a href='http://ask-usa-pony.tumblr.com/page/51'>With the support of about 100 Followers, She became more active with Tumblr, creating an innovative idea of combining a country with a character. It was very successful.</a>"),
-      $("<p>Her interest in Youtube and games gave her an opportunity to also take an interest in video editing, picking up on <i>Adobe After Effects</i>.</p>"),
-      $("<br>"),
-      $("<p>Raphaele has shown struggles in her academic life</p>")
-    ];
+      var age13 = [
+        $("<p><strong>Age: 13 years</strong></p>"),
+        $("<p>She has started taking art more seriously as a hobby, obtaining a <i>tablet</i>!</p>"),
+        $("<a href='http://ask-usa-pony.tumblr.com/page/51'>With the support of about 100 Followers, She became more active with Tumblr, creating an innovative idea of combining a country with a character. It was very successful.</a>"),
+        $("<p>Her interest in Youtube and games gave her an opportunity to also take an interest in video editing, picking up on <i>Adobe After Effects</i>.</p>"),
+        $("<br>"),
+        $("<p>Raphaele has shown struggles in her academic life</p>")
+      ];
     
     //contents of age 14 (2016)
-    var age14 = [
-    $("<p><strong>Age: 14 years</strong></p>"),
-    $("<a href='http://ask-usa-pony.tumblr.com/post/127151806575/oh-what-to-do'>The country character blog has gained the impossible of 3K Followers in the span of a year.</a>"),
-    $("<p>This brought Raphaele immense happiness and power, perhaps also distraction and detachment.</p>"),
-    $("<p>Continuing her interest in art, she has started participating in the newspaper club with her current digital art knowledge.</p>"),
-    $("<p>She has also decided to reach further skill development by joining an 'Creative Multi-media Illustration' Course.</p>"),
-    $("<p>Noting that she is immensely younger than the other students, she has learnt a variety of skills and mediums with professional help, as well as how the art world works.</p>"),
-    ];
-    var age14Cont = [
-    $("<p>She was caught cheating in a Math test.</p>"),
-    $("<p>She was sent to the principals office along with her accomplice.</p>"),
-    $("<p>Regarding her Criterion D score in Drama, they also noted her inactivity in academics.</p>"),
-    $("<br>"),
-    $("<p>As a result, not only does she gain more support from her parents and school.</p>"),
-    $("<a href='http://ask-usa-pony.tumblr.com/post/164356282060/still-screaming-while-i-make-this-post-more#disqus_thread'> Raphaele also put an official end on Tumblr to focus more on her schoolwork.</a>")
-    ];
-    
+      var age14 = [
+      $("<p><strong>Age: 14 years</strong></p>"),
+      $("<a href='http://ask-usa-pony.tumblr.com/post/127151806575/oh-what-to-do'>The country character blog has gained the impossible of 3K Followers in the span of a year.</a>"),
+      $("<p>This brought Raphaele immense happiness and power, perhaps also distraction and detachment.</p>"),
+      $("<p>Continuing her interest in art, she has started participating in the newspaper club with her current digital art knowledge.</p>"),
+      $("<p>She has also decided to reach further skill development by joining an 'Creative Multi-media Illustration' Course.</p>"),
+      $("<p>Noting that she is immensely younger than the other students, she has learnt a variety of skills and mediums with professional help, as well as how the art world works.</p>"),
+      ];
+      var age14Cont = [
+      $("<p>She was caught cheating in a Math test.</p>"),
+      $("<p>She was sent to the principals office along with her accomplice.</p>"),
+      $("<p>Regarding her Criterion D score in Drama, they also noted her inactivity in academics.</p>"),
+      $("<br>"),
+      $("<p>As a result, not only does she gain more support from her parents and school.</p>"),
+      $("<a href='http://ask-usa-pony.tumblr.com/post/164356282060/still-screaming-while-i-make-this-post-more#disqus_thread'> Raphaele also put an official end on Tumblr to focus more on her schoolwork.</a>")
+      ];
+      
     //contents of age 15
-    var age15 = [
-    $("<p><strong>Age: 15 years</strong></p>"),
-    $("<p>Raphaele has become more active in the school body</p>"),
-    $("<p>She's participating more in CAS Clubs related to her specialty: Art, learning how to master different mediums.</p>"),
-    $("<p>With her knowledge in Digital Arts, she has managed a Coffee Shop for the school event 'Family Fun Day' as the head of advertisement.</p>"),
-    $("<p>She has also worked on bigger projects with the school newspaper, such as cover pages.</p>"),
-    $("<p>To enhance her knowledge in animations, she dedicated her School Personal Project to Theraputic Animations as her topic.</p>"),
-    $("<p>Finally putting effort and care into her life, Raphaele was recognised and awarded an Improvement Scholarship by the school.</p>"),
-    ];
+      var age15 = [
+      $("<p><strong>Age: 15 years</strong></p>"),
+      $("<p>Raphaele has become more active in the school body</p>"),
+      $("<p>She's participating more in CAS Clubs related to her specialty: Art, learning how to master different mediums.</p>"),
+      $("<p>With her knowledge in Digital Arts, she has managed a Coffee Shop for the school event 'Family Fun Day' as the head of advertisement.</p>"),
+      $("<p>She has also worked on bigger projects with the school newspaper, such as cover pages.</p>"),
+      $("<p>To enhance her knowledge in animations, she dedicated her School Personal Project to Theraputic Animations as her topic.</p>"),
+      $("<p>Finally putting effort and care into her life, Raphaele was recognised and awarded an Improvement Scholarship by the school.</p>"),
+      ];
 
     //contents of age 16 (2018)
-    var age16 = [
-    $("<p><strong>Age: 16 years</strong></p>"),
-    $("<p>Taking an interest in Debate, Raphaele participated in a HKU 'Critical Thinking' Course for Summer.</p>"),
-    $("<p>With that knowledge, she developed a 'Casual Debate Club' with her friends.</p>"),
-    $("<p>She also joined the Mock Trial Club to enhance her skills and knowledge in not only critical thinking, but public speaking.</p>"),
-    
-    $("<p>Recognising her interest in video editng, Raphaele finally decided to join the video productions club 'Campus TV'.</p>"),
-    $("<p>She decided to broaden her video editing skills gained over the years and participated in a challenging video competition with her friends, ending up as part of the batch of Semi-Finalists out of 1500 videos (at most 4500 participants).</p>"),
-    
-    $("<p>Although seemingly late, She took an interest in Coding. She decided to taste coding through a summer programme.</p>"),
-    $("<p>Confirming her interest, she continued her coding journey through learning basic Web Development in a Coding Course.</p>"),
-    $("<p>Taking advantage of her coding interest and art knowledge, She made two visual novels with Python, using the aid of Renpy.</p>")
-    
-    ];
+      var age16 = [
+      $("<p><strong>Age: 16 years</strong></p>"),
+      $("<p>Taking an interest in Debate, Raphaele participated in a HKU 'Critical Thinking' Course for Summer.</p>"),
+      $("<p>With that knowledge, she developed a 'Casual Debate Club' with her friends.</p>"),
+      $("<p>She also joined the Mock Trial Club to enhance her skills and knowledge in not only critical thinking, but public speaking.</p>"),
+      
+      $("<p>Recognising her interest in video editng, Raphaele finally decided to join the video productions club 'Campus TV'.</p>"),
+      $("<p>She decided to broaden her video editing skills gained over the years and participated in a challenging video competition with her friends, ending up as part of the batch of Semi-Finalists out of 1500 videos (at most 4500 participants).</p>"),
+      
+      $("<p>Although seemingly late, She took an interest in Coding. She decided to taste coding through a summer programme.</p>"),
+      $("<p>Confirming her interest, she continued her coding journey through learning basic Web Development in a Coding Course.</p>"),
+      $("<p>Taking advantage of her coding interest and art knowledge, She made two visual novels with Python, using the aid of Renpy.</p>")
+      
+      ];
 
     //contents of END
-    var END = [
-    $("<p><strong>END</strong></p>"),
-    $("<p>Editors note: Phew! This took a long time to finish but it was fun to go through my past bit by bit.</p>"),
-    $("<p>I would like to say that nothing has been frabricated. Even the emails (though of course I needed to pick out the more significant things of said years.)</p>"),
-    $("<p>I hope you enjoyed going through a small biography of my life!</p>")
-    ];
+      var END = [
+      $("<p><strong>END</strong></p>"),
+      $("<p>Editors note: Phew! This took a long time to finish but it was fun to go through my past bit by bit.</p>"),
+      $("<p>I would like to say that nothing has been frabricated. Even the emails (though of course I needed to pick out the more significant things of said years.)</p>"),
+      $("<p>I hope you enjoyed going through a small biography of my life!</p>")
+      ];
 
     /* Checklist:
     √ description
@@ -796,7 +704,8 @@ $("#sideContainer").append(levelUp);
     });
 
 //exiting out of click function of icon
-});
+  });
 
 //append icon, meaning append the start of the story, duuuunnnnnnn
 $("#inGame").append(icon);
+

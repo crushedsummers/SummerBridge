@@ -146,6 +146,16 @@
       }
     }
 
+  //scroll update
+    function updateScroll(){
+      console.log("hm");
+      var container = $('.mainPage')[0];
+      var containerHeight = container.clientHeight;
+      var contentHeight = container.scrollHeight;
+
+      container.scrollTop = contentHeight - containerHeight;
+    }
+
   //if level up button clicked:
     //note: will ALWAYS occur in story page
     $(levelUp).click(function() {
@@ -195,6 +205,7 @@
                 $("#levelUp").css("display", "block");
                 //remove onclick function on arrow
                 $(arrowContainer).off("click");
+                updateScroll();
               });  
 
               $("#sideContainer").append(arrowContainer);
@@ -279,15 +290,17 @@
                   //the id MUST == name of array
                   var chosenDecision = $(this).attr("id");
                   console.log(chosenDecision);
+                  console.log(chosenDecision.length);
                   //offerDialouge is TEMPORARY, PROBLEM
-                  for (var i=0;i < offerDialouge.length;i++){
-                    $("#storyDiv").append(offerDialouge[i]);
-                    //make lvlup available again
+                  for (var i=0;i < chosenDecision.length;i++){
+                    $("#storyDiv").append(chosenDecision[i]);
+                  }
+                  //make lvlup available again
                     $("#levelUp").css("display", "block");
-                    //get rid of decision option after haven chosen one
+                  //get rid of decision option after haven chosen one
                     $(".decision").removeClass("decision");
                     console.log("decision chosen!");
-                  }
+                    updateScroll();
                 });
                 $("#storyDiv").append("<br>");
             }
@@ -354,6 +367,7 @@
                   $("#levelUp").css("display", "block");
                 //remove onclick function on arrow
                   $(arrowContainer).off("click");
+                  updateScroll();
                });  
                 $("#storyDiv").append("<br>");
               $(arrowContainer).css("display", "block");
@@ -513,6 +527,7 @@
 
       //save current progress
       savePages();
+      updateScroll();
       
       //exiting out of age boundary  
       } 
@@ -524,24 +539,28 @@
           $("#storyDiv").append(age170[i]);
         }
         $("#storyDiv").append("<br>");
+        updateScroll();
         //what happens at 2 months old
         $(arrowContainer).on("click", function() {
           //append story contents
           for (var i=0;i < age171.length;i++){
             $("#storyDiv").append(age171[i]);
           }
+          updateScroll();
           $(arrowContainer).off("click");
           $(arrowContainer).on("click", function() {
           //append story contents
           for (var i=0;i < age172.length;i++){
             $("#storyDiv").append(age172[i]);
           }
+          updateScroll();
           $(arrowContainer).off("click");
           $(arrowContainer).on("click", function() {
           //append story contents
           for (var i=0;i < age173.length;i++){
             $("#storyDiv").append(age173[i]);
           }
+          updateScroll();
           $(arrowContainer).off("click");
           $(arrowContainer).css("display", "none");
         });
@@ -592,15 +611,42 @@
           if (desiredPageIcon == "email"){
             console.log("email picked!!");
             $("#emailDiv").removeClass("mainPageVisibility");
-            $("#levelUp").css("display", "none");
+            if ($("#levelUp").css("display", "block")){
+              $("#levelUp").css("display", "none")
+            }
+            
+            if ($(arrowContainer).css("display", "block")){
+              $(arrowContainer).css("display", "none")
+            }
           }
           else if (desiredPageIcon == "story"){
             $("#storyDiv").removeClass("mainPageVisibility");
-            $("#levelUp").css("display", "block");
+            
+            if ($(arrowContainer).css("display", "none") ){
+              $("#levelUp").css("display", "block");
+            }
+            else if ($(arrowContainer).css("display", "block")){
+              $("#levelUp").css("display", "none");
+            }
+
+
+            // if ($("#levelUp").css("display", "block")){
+            //   $("#levelUp").css("display", "block")
+            // }
+            
+            // if ($(arrowContainer).css("display", "block")){
+            //   $(arrowContainer).css("display", "block")
+            // }
           }
           else if (desiredPageIcon == "achieve"){
             $("#achieveDiv").removeClass("mainPageVisibility");
-            $("#levelUp").css("display", "none");
+            if ($("#levelUp").css("display", "block")){
+              $("#levelUp").css("display", "none")
+            }
+            
+            if ($(arrowContainer).css("display", "block")){
+              $(arrowContainer).css("display", "none")
+            }
           }
     }
       //re-append click function
@@ -818,7 +864,7 @@ $("#sideContainer").append(levelUp);
       
       var age173 = [
       $("<p>This about sums up my Creative Personal Statement.</p>"),
-      $("<p>Even if I don't get accepted, I'm glad to have gotten into this situation where I had to create this and explore more about myself (as of now, it's about 900 lines of code).</p>"),
+      $("<p>Even if I don't get accepted, I'm glad to have gotten into this situation where I had to create this and explore more about myself (as of now, it's about 1000 lines of code).</p>"),
       $("<p>Of course, I'd be honored to be considered as I'd be super excited to be able to help Summerbridge's cause.</p>"),
       $("<p>So thank you for the opportunity, and for going through my BitLife!</p>")
       ];
